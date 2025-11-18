@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+
+class Pedido extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+    'subtotal',
+    'impuesto',
+    'total',
+    'fechapedido',
+    'procedencia',
+    'estado',
+    'user_id'
+    ];
+     //Relacion con Detalle con hasMany
+     public function detalles(){  
+        return $this->hasMany(Detalle::class);
+    }
+     public function user(){  
+        return $this->belongsTo(User::class);
+    }
+}
